@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      GID: ${GID:-1000}
+      UID: ${UID:-1000}
+    user: "${GID:-1000}:${UID:-1000}"
+    tty: true
